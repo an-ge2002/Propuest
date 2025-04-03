@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta Especial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fffbf1; /* Color suave de fondo */
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: #fff; /* Agregar esta línea para cambiar el color del texto a blanco */
+        }
+        #no {
+            background-color: #8bc34a; /* Verde para "no" */
+        }
+        #no:hover {
+            background-color: #66bb6a;
+        }
+        #yes {
+            background-color: #ff69b4; /* Rosa para "sí" */
+        }
+        #yes:hover {
+            background-color: #ff1493;
+        }
+        #message {
+            display: none;
+            font-size: 1.8rem;
+            color: #ff1493; /* Rosa para el mensaje */
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .heart {
+            font-size: 2rem;
+            color: #ff69b4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jote ¿Quieres pasar toda tu vida conmigo?</h1>
+        <button class="button" id="no" onclick="moveNo()">No</button>
+        <button class="button" id="yes" onclick="sayYes()">Sí</button>
+        <div id="message"></div>
+        <div class="heart">❤️</div>
+    </div>
+    <audio id="fondo" loop>
+        <source src="music/song.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento audio.
+      </audio>
+    <script>
+        function moveNo() {
+            const noButton = document.getElementById('no');
+            const maxWidth = window.innerWidth - noButton.offsetWidth;
+            const maxHeight = window.innerHeight - noButton.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+
+        function sayYes() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'block';
+            messageDiv.textContent = '¡Yo también te quiero toda la vida! ';
+            const audio = document.getElementById('fondo');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
